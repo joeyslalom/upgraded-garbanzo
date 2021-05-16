@@ -1,0 +1,6 @@
+steps:
+  - name: 'adoptopenjdk/openjdk11'
+    entrypoint: './gradlew'
+    args: ['buildBootImage']
+options:
+  machineType: 'N1_HIGHCPU_32'
