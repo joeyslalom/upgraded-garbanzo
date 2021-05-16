@@ -1,6 +1,8 @@
 steps:
-  - name: 'adoptopenjdk/openjdk11'
+  - name: 'adoptopenjdk/11-jdk-hotspot'
     entrypoint: './gradlew'
-    args: ['bootBuildImage']
+    args: ['bootBuildImage', '--imageName=gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
+images:
+  - 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA'
 options:
   machineType: 'N1_HIGHCPU_32'
