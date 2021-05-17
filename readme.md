@@ -9,5 +9,10 @@
 3. Integrate with [Cloud Build](https://cloud.google.com/build/docs/building/build-containers)     
     * `gcloud builds submit --substitutions REPO_NAME=upgraded-garbanzo,COMMIT_SHA=$(git rev-parse HEAD)`
 4. Use Spring Boot Actuators for health and info 
-5. Include `spring-cloud-gcp-starter-logging` for structured logging
-6. Can't use logback-spring.xml [issue](https://github.com/spring-projects-experimental/spring-native/issues/625)
+5. Normally, I'd use `spring-cloud-gcp-starter-logging` for structured logging
+     * Currently disabled: [Can't use logback-spring.xml](https://github.com/spring-projects-experimental/spring-native/issues/625)
+6. Fails on start on Cloud Run.
+     ```
+     Failed to process import candidates for configuration class [joeyslalom.upgradedgarbanzo.UpgradedGarbanzoApplication]; nested exception is java.io.FileNotFoundException: class path resource
+     [com/google/cloud/spring/autoconfigure/datastore/GcpDatastoreEmulatorAutoConfiguration.class] cannot be opened because it does not exist
+     ```
