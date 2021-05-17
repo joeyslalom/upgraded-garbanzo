@@ -10,3 +10,4 @@
     * `gcloud builds submit --substitutions REPO_NAME=upgraded-garbanzo,COMMIT_SHA=$(git rev-parse HEAD)`
 4. Use Spring Boot Actuators for health and info 
 5. Include `spring-cloud-gcp-starter-logging` for structured logging
+6. Can't use logback-spring.xml [issue](https://github.com/spring-projects-experimental/spring-native/issues/625)
