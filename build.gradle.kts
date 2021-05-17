@@ -7,6 +7,7 @@ plugins {
 	kotlin("jvm") version "1.4.32"
 	kotlin("plugin.spring") version "1.4.32"
 	id("org.springframework.experimental.aot") version "0.9.2"
+	id("com.gorylenko.gradle-git-properties") version "2.3.1"
 }
 
 group = "joeyslalom"
@@ -26,6 +27,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("com.google.cloud:spring-cloud-gcp-starter")
+	implementation("com.google.cloud:spring-cloud-gcp-starter-logging")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -52,4 +54,8 @@ tasks.withType<Test> {
 tasks.withType<BootBuildImage> {
 	builder = "paketobuildpacks/builder:tiny"
 	environment = mapOf("BP_NATIVE_IMAGE" to "true")
+}
+
+springBoot {
+	buildInfo()
 }
