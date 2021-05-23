@@ -52,7 +52,8 @@ tasks.withType<Test> {
 
 tasks.withType<BootBuildImage> {
 	builder = "paketobuildpacks/builder:tiny"
-	environment = mapOf("BP_NATIVE_IMAGE" to "true")
+	environment = mapOf("BP_NATIVE_IMAGE" to "true",
+		"BP_NATIVE_IMAGE_BUILD_ARGUMENTS" to "--enable-url-protocols=http")
 }
 
 springBoot {
