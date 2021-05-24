@@ -11,8 +11,7 @@
 4. Use Spring Boot Actuators for health and info 
 5. Normally, I'd use `spring-cloud-gcp-starter-logging` for structured logging
      * Currently disabled: [Can't use logback-spring.xml](https://github.com/spring-projects-experimental/spring-native/issues/625)
-6. Fails on start on Cloud Run.
-     ```
-     Failed to process import candidates for configuration class [joeyslalom.upgradedgarbanzo.UpgradedGarbanzoApplication]; nested exception is java.io.FileNotFoundException: class path resource
-     [com/google/cloud/spring/autoconfigure/datastore/GcpDatastoreEmulatorAutoConfiguration.class] cannot be opened because it does not exist
-     ```
+6. Builds okay, but fails on start on Cloud Run.
+     * `BeanDefinitionStoreException` resolved with `@TypeHint`
+     * `BeanInstantiationException` resolved with argument to `native-image`
+7. Disabled disk health indicator so health check won't return status `DOWN`
