@@ -1,7 +1,6 @@
 package joeyslalom.upgradedgarbanzo
 
 import com.google.api.gax.core.CredentialsProvider
-import com.google.cloud.spring.core.GcpEnvironmentProvider
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.boot.info.GitProperties
@@ -10,21 +9,17 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class GcpRestController(
-    private val credentialsProvider: CredentialsProvider,
-    private val environmentProvider: GcpEnvironmentProvider
-) {
+class GcpRestController(private val credentialsProvider: CredentialsProvider) {
+    private val log = LoggerFactory.getLogger(GcpRestController::class.java)
 
     @GetMapping("/gcp-creds")
     fun gcpCreds(): GcpCreds {
         with(credentialsProvider.credentials) {
-            return GcpCreds(authenticationType, requestMetadata)
+            log.info("authType=${this.authenticationType}")
+            log.info("requestMetadataKeys=${this.requestMetadata.keys}")
+            log.info("requestMetadata=${this.requestMetadata}")
+            return GcpCreds(authenticationType, emptyMap())
         }
-    }
-
-    @GetMapping("/gcp-env")
-    fun gcpEnv(): String {
-        return environmentProvider.currentEnvironment.name
     }
 }
 
