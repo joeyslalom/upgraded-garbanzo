@@ -4,7 +4,6 @@ import com.google.cloud.spring.autoconfigure.datastore.GcpDatastoreEmulatorAutoC
 import org.springframework.context.annotation.Configuration
 import org.springframework.nativex.hint.TypeHint
 
-
 @TypeHint(types = [GcpDatastoreEmulatorAutoConfiguration::class])
 @Configuration
 class GcpDatastoreEmulatorAutoConfigurationHint
