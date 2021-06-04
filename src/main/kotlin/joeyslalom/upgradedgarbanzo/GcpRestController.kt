@@ -13,17 +13,10 @@ class GcpRestController(private val credentialsProvider: CredentialsProvider) {
     private val log = LoggerFactory.getLogger(GcpRestController::class.java)
 
     @GetMapping("/gcp-creds")
-    fun gcpCreds(): GcpCreds {
-        with(credentialsProvider.credentials) {
-            log.info("authType=${this.authenticationType}")
-            log.info("requestMetadataKeys=${this.requestMetadata.keys}")
-            log.info("requestMetadata=${this.requestMetadata}")
-            return GcpCreds(authenticationType, emptyMap())
-        }
+    fun gcpCreds() {
+        log.info("credentials=${credentialsProvider.credentials}")
     }
 }
-
-data class GcpCreds(val authType: String, val metadata: Map<String, List<String>>)
 
 @Component
 class LogVersion(private val gitProperties: GitProperties) : InitializingBean {
