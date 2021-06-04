@@ -4,7 +4,7 @@ steps:
     args: ['bootBuildImage', '--imageName=gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
-    args: ['run','deploy', $REPO_NAME, '--image', 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
+    args: ['run', 'deploy', '$REPO_NAME', '--image', 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA', '--region', 'us-central1']
 images:
   - 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA'
 options:
