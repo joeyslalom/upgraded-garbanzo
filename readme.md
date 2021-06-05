@@ -15,3 +15,4 @@
      * `BeanDefinitionStoreException` resolved with `@TypeHint`
      * `BeanInstantiationException` resolved with argument to `native-image`
 7. Disabled disk health indicator so health check won't return status `DOWN`
+8. Cloud Run has an option for "Continuous Deployment", but not with my configuration (iconically, cloudbuild.yaml).  So, had to add multiple `steps` in my cloudbuild.yaml, and update an [iam permission](https://cloud.google.com/build/docs/deploying-builds/deploy-cloud-run#continuous-iam)
