@@ -1,3 +1,12 @@
+# Integrations
+* Spring Boot
+    * Kotlin
+    * Gradle
+    * Spring Native
+* Google Cloud
+    * Cloud Run
+    * Cloud Build
+    * Cloud SQL - MySQL
 
 # How I made this
 1. [Spring Initializer](htps://start.spring.io): Kotlin, Web, Actuator, GCP and Native [link](https://start.spring.io/#!type=gradle-project&language=kotlin&platformVersion=2.4.5.RELEASE&packaging=jar&jvmVersion=11&groupId=joeyslalom&artifactId=upgraded-garbanzo&name=upgraded-garbanzo&description=Demo%20project%20for%20Spring%20Boot&packageName=joeyslalom.upgraded-garbanzo&dependencies=native,actuator,web,cloud-gcp)
@@ -6,6 +15,7 @@
 2. Build container image via [Buildpack](https://docs.spring.io/spring-native/docs/current/reference/htmlsingle/#getting-started-buildpacks)
     * `./gradlew bootBuildImage`
     * Encountered [known memory error building on Mac ](https://docs.spring.io/spring-native/docs/current/reference/htmlsingle/#_out_of_memory_error_when_building_the_native_image)
+   * `docker run upgraded-garbanzo:0.0.1-SNAPSHOT -p 8080:8080`
 3. Integrate with [Cloud Build](https://cloud.google.com/build/docs/building/build-containers)     
     * `gcloud builds submit --substitutions REPO_NAME=upgraded-garbanzo,COMMIT_SHA=$(git rev-parse HEAD)`
 4. Use Spring Boot Actuators for health and info 
@@ -15,4 +25,15 @@
      * `BeanDefinitionStoreException` resolved with `@TypeHint`
      * `BeanInstantiationException` resolved with argument to `native-image`
 7. Disabled disk health indicator so health check won't return status `DOWN`
-8. Cloud Run has an option for "Continuous Deployment", but not with my configuration (iconically, cloudbuild.yaml).  So, had to add multiple `steps` in my cloudbuild.yaml, and update an [iam permission](https://cloud.google.com/build/docs/deploying-builds/deploy-cloud-run#continuous-iam)
+8. Cloud Run has an option for "Continuous Deployment", but not with my configuration (iconically, cloudbuild.yaml).
+     * Add multiple `steps` in my cloudbuild.yaml
+     * Enable [Cloud Run Admin](https://cloud.google.com/build/docs/deploying-builds/deploy-cloud-run#required_iam_permissions)
+     * Update an [iam permission](https://cloud.google.com/build/docs/deploying-builds/deploy-cloud-run#continuous-iam)
+9. Cloud SQL
+    * Add `spring-cloud-gcp-starter-sql-mysql` dependency
+    * Create Cloud SQL database
+    * Put database password in Secret Manager
+    * Reference Secret Manager password in Cloud Run, expose as Environment Variable
+    * Expose database and instance connection name as Environment Variables in Cloud Run
+    * Consume Environment Variables in application.properties
+    * https://github.com/GoogleCloudPlatform/spring-cloud-gcp/tree/main/spring-cloud-gcp-samples/spring-cloud-gcp-sql-mysql-sample
