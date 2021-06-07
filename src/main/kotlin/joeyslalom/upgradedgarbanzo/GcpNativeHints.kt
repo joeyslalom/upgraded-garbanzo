@@ -1,9 +1,9 @@
 package joeyslalom.upgradedgarbanzo
 
-import com.google.cloud.spring.autoconfigure.datastore.GcpDatastoreEmulatorAutoConfiguration
+import com.google.cloud.spring.autoconfigure.sql.CloudSqlEnvironmentPostProcessor
 import org.springframework.context.annotation.Configuration
 import org.springframework.nativex.hint.TypeHint
 
-@TypeHint(types = [GcpDatastoreEmulatorAutoConfiguration::class])
+@TypeHint(types = [CloudSqlEnvironmentPostProcessor::class])
 @Configuration
-class GcpDatastoreEmulatorAutoConfigurationHint
+class GcpAutoConfigurationHint

@@ -30,10 +30,12 @@
      * Enable [Cloud Run Admin](https://cloud.google.com/build/docs/deploying-builds/deploy-cloud-run#required_iam_permissions)
      * Update an [iam permission](https://cloud.google.com/build/docs/deploying-builds/deploy-cloud-run#continuous-iam)
 9. Cloud SQL
-    * Add `spring-cloud-gcp-starter-sql-mysql` dependency
     * Create Cloud SQL database
-    * Put database password in Secret Manager
-    * Reference Secret Manager password in Cloud Run, expose as Environment Variable
-    * Expose database and instance connection name as Environment Variables in Cloud Run
+      * Put database password in Secret Manager
+    * In Cloud Run:
+      * Reference Secret Manager password as Environment Variable
+      * Expose database and instance connection name as Environment Variables
+      * Add "Cloud SQL connection" to instance
+    * Add `spring-cloud-gcp-starter-sql-mysql` dependency
     * Consume Environment Variables in application.properties
     * https://github.com/GoogleCloudPlatform/spring-cloud-gcp/tree/main/spring-cloud-gcp-samples/spring-cloud-gcp-sql-mysql-sample
