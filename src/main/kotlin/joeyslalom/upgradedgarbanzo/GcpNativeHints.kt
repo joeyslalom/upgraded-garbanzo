@@ -24,7 +24,7 @@ class GcpAutoConfigurationHint
 @TypeHint(
     types = [CloudSqlEnvironmentPostProcessor::class, DataSource::class, EmbeddedDatabaseType::class,
         CredentialFactory::class, SocketFactory::class, Driver::class, CoreSocketFactory::class,
-        GcpCloudSqlProperties::class, GenericData::class, GoogleJsonError.ErrorInfo::class
+        GcpCloudSqlProperties::class, GenericData::class, GoogleJsonError.ErrorInfo::class, GoogleJsonError::class
     ]
 )
 @Configuration
