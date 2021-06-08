@@ -28,6 +28,6 @@ class GcpAutoConfigurationHint
 @Configuration
 class GcpCloudSqlHint
 
-@NativeHint(resources = [ResourceHint(patterns=[".*/google.jks$"])])
+@NativeHint(resources = [ResourceHint(patterns=["com/google/api/client/googleapis/google.jks"])])
 @Configuration
 class GcpResourcesHint
