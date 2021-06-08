@@ -2,14 +2,23 @@ package joeyslalom.upgradedgarbanzo
 
 import com.google.cloud.spring.autoconfigure.datastore.GcpDatastoreEmulatorAutoConfiguration
 import com.google.cloud.spring.autoconfigure.sql.CloudSqlEnvironmentPostProcessor
+import com.google.cloud.sql.CredentialFactory
+import com.google.cloud.sql.mysql.SocketFactory
+import com.mysql.cj.jdbc.Driver
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType
+import org.springframework.nativex.hint.InitializationHint
 import org.springframework.nativex.hint.TypeHint
+import javax.sql.DataSource
 
 
-@TypeHint(types = [CloudSqlEnvironmentPostProcessor::class, GcpDatastoreEmulatorAutoConfiguration::class])
+@TypeHint(types = [GcpDatastoreEmulatorAutoConfiguration::class])
 @Configuration
-class GcpAutoConfigurationHint {
-    @Bean
-    fun cloudSql() = CloudSqlEnvironmentPostProcessor()
-}
+class GcpAutoConfigurationHint
+
+@TypeHint(types = [CloudSqlEnvironmentPostProcessor::class, DataSource::class, EmbeddedDatabaseType::class,
+    CredentialFactory::class, SocketFactory::class, Driver::class
+])
+@Configuration
+class GcpCloudSqlHint
