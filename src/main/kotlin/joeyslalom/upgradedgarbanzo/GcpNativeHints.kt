@@ -2,7 +2,7 @@ package joeyslalom.upgradedgarbanzo
 
 import com.google.api.client.googleapis.json.GoogleJsonError
 import com.google.api.client.util.GenericData
-import com.google.auth.oauth2.GoogleCredentials
+import com.google.cloud.spring.autoconfigure.core.GcpProperties
 import com.google.cloud.spring.autoconfigure.datastore.GcpDatastoreEmulatorAutoConfiguration
 import com.google.cloud.spring.autoconfigure.sql.CloudSqlEnvironmentPostProcessor
 import com.google.cloud.spring.autoconfigure.sql.GcpCloudSqlProperties
@@ -26,7 +26,7 @@ class GcpAutoConfigurationHint
     types = [CloudSqlEnvironmentPostProcessor::class, DataSource::class, EmbeddedDatabaseType::class,
         CredentialFactory::class, SocketFactory::class, Driver::class, CoreSocketFactory::class,
         GcpCloudSqlProperties::class, GenericData::class, GoogleJsonError.ErrorInfo::class, GoogleJsonError::class,
-        GoogleCredentials::class]
+        GcpProperties::class]
 )
 @Configuration
 class GcpCloudSqlHint
