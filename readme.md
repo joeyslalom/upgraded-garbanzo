@@ -32,6 +32,7 @@
 9. Cloud SQL
     * Create Cloud SQL database
       * Put database password in Secret Manager
+    * Update IAM, add Cloud Run service account to roles/cloudsql.client
     * In Cloud Run:
       * Reference Secret Manager password as Environment Variable
       * Expose database and instance connection name as Environment Variables

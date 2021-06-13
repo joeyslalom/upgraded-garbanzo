@@ -7,6 +7,7 @@ import com.google.api.client.util.Data
 import com.google.api.client.util.GenericData
 import com.google.api.services.sqladmin.SQLAdmin
 import com.google.api.services.sqladmin.SQLAdminRequest
+import com.google.api.services.sqladmin.model.DatabaseFlags
 import com.google.api.services.sqladmin.model.DatabaseInstance
 import com.google.api.services.sqladmin.model.Operation
 import com.google.cloud.spring.autoconfigure.datastore.GcpDatastoreEmulatorAutoConfiguration
@@ -30,17 +31,22 @@ class GcpAutoConfigurationHint
 
 @TypeHint(
     types = [CloudSqlEnvironmentPostProcessor::class, DataSource::class, EmbeddedDatabaseType::class,
-        CredentialFactory::class, SocketFactory::class, Driver::class, CoreSocketFactory::class,
-        GcpCloudSqlProperties::class]
+        CredentialFactory::class, SocketFactory::class, Driver::class,
+        CoreSocketFactory::class, GcpCloudSqlProperties::class]
 )
 @Configuration
 class GcpCloudSqlHint
 
 @TypeHint(
+    types = [SQLAdmin::class, SQLAdmin.Operations.Get::class, SQLAdmin.Instances.Get::class,
+        Operation::class, DatabaseInstance::class, SQLAdminRequest::class, DatabaseFlags::class]
+)
+@Configuration
+class GcpSqlAdminHint
+
+@TypeHint(
     types = [GenericData::class, GoogleJsonError.ErrorInfo::class, GoogleJsonError::class,
-        GenericJson::class, SQLAdmin::class, SQLAdmin.Operations.Get::class,
-        Data::class, ClassInfo::class, Operation::class, DatabaseInstance::class, SQLAdminRequest::class,
-        SQLAdmin.Instances.Get::class],
+        GenericJson::class, Data::class, ClassInfo::class],
     typeNames = ["com.google.api.client.util.DataMap"]
 )
 @Configuration
