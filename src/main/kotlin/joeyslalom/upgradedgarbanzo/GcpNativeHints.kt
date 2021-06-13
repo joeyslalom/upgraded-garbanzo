@@ -38,7 +38,7 @@ class GcpCloudSqlHint
 @TypeHint(
     types = [SQLAdmin::class, SQLAdmin.Operations.Get::class, SQLAdmin.Instances.Get::class,
         Operation::class, DatabaseInstance::class, SQLAdminRequest::class,
-        DatabaseFlags::class, Settings::class, SslCert::class]
+        DatabaseFlags::class, Settings::class, SslCert::class, AclEntry::class]
 )
 @Configuration
 class GcpSqlAdminHint
