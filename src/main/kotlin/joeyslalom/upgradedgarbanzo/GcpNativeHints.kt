@@ -52,7 +52,7 @@ class GcpCloudSqlHint
         DatabaseFlags::class, Settings::class, SslCert::class,
         AclEntry::class, IpConfiguration::class, SslCertsCreateEphemeralRequest::class,
         LocationPreference::class, MaintenanceWindow::class, SQLAdmin.SslCerts::class,
-    BackupConfiguration::class
+        BackupConfiguration::class, DatabaseInstance.FailoverReplica::class, SQLAdmin.SslCerts.CreateEphemeral::class,
     ]
 )
 @Configuration
