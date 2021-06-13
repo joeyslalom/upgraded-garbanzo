@@ -8,6 +8,7 @@ import com.google.api.client.util.ClassInfo
 import com.google.api.client.util.Data
 import com.google.api.client.util.GenericData
 import com.google.api.services.sqladmin.SQLAdmin
+import com.google.api.services.sqladmin.model.Operation
 import com.google.auth.oauth2.ServiceAccountCredentials
 import com.google.auth.oauth2.ServiceAccountJwtAccessCredentials
 import com.google.cloud.spring.autoconfigure.core.GcpProperties
@@ -41,7 +42,7 @@ class GcpCloudSqlHint
 @TypeHint(
     types = [GenericData::class, GoogleJsonError.ErrorInfo::class, GoogleJsonError::class,
         GenericJson::class, SQLAdmin::class, SQLAdmin.Operations.Get::class,
-    Data::class, ClassInfo::class],
+    Data::class, ClassInfo::class, Operation::class],
     typeNames = ["com.google.api.client.util.DataMap"]
 )
 @Configuration
