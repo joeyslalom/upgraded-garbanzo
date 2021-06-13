@@ -8,6 +8,7 @@ import com.google.api.client.util.GenericData
 import com.google.api.services.sqladmin.SQLAdmin
 import com.google.api.services.sqladmin.SQLAdminRequest
 import com.google.api.services.sqladmin.model.AclEntry
+import com.google.api.services.sqladmin.model.BackupConfiguration
 import com.google.api.services.sqladmin.model.DatabaseFlags
 import com.google.api.services.sqladmin.model.DatabaseInstance
 import com.google.api.services.sqladmin.model.IpConfiguration
@@ -51,6 +52,7 @@ class GcpCloudSqlHint
         DatabaseFlags::class, Settings::class, SslCert::class,
         AclEntry::class, IpConfiguration::class, SslCertsCreateEphemeralRequest::class,
         LocationPreference::class, MaintenanceWindow::class, SQLAdmin.SslCerts::class,
+    BackupConfiguration::class
     ]
 )
 @Configuration
