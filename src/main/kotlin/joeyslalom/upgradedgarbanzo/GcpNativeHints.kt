@@ -7,9 +7,7 @@ import com.google.api.client.util.Data
 import com.google.api.client.util.GenericData
 import com.google.api.services.sqladmin.SQLAdmin
 import com.google.api.services.sqladmin.SQLAdminRequest
-import com.google.api.services.sqladmin.model.DatabaseFlags
-import com.google.api.services.sqladmin.model.DatabaseInstance
-import com.google.api.services.sqladmin.model.Operation
+import com.google.api.services.sqladmin.model.*
 import com.google.cloud.spring.autoconfigure.datastore.GcpDatastoreEmulatorAutoConfiguration
 import com.google.cloud.spring.autoconfigure.sql.CloudSqlEnvironmentPostProcessor
 import com.google.cloud.spring.autoconfigure.sql.GcpCloudSqlProperties
@@ -39,7 +37,8 @@ class GcpCloudSqlHint
 
 @TypeHint(
     types = [SQLAdmin::class, SQLAdmin.Operations.Get::class, SQLAdmin.Instances.Get::class,
-        Operation::class, DatabaseInstance::class, SQLAdminRequest::class, DatabaseFlags::class]
+        Operation::class, DatabaseInstance::class, SQLAdminRequest::class,
+        DatabaseFlags::class, Settings::class, SslCert::class]
 )
 @Configuration
 class GcpSqlAdminHint
