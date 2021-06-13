@@ -4,6 +4,8 @@ import com.google.api.client.googleapis.json.GoogleJsonError
 import com.google.api.client.googleapis.services.json.AbstractGoogleJsonClient
 import com.google.api.client.googleapis.services.json.AbstractGoogleJsonClientRequest
 import com.google.api.client.json.GenericJson
+import com.google.api.client.util.ClassInfo
+import com.google.api.client.util.Data
 import com.google.api.client.util.GenericData
 import com.google.api.services.sqladmin.SQLAdmin
 import com.google.auth.oauth2.ServiceAccountCredentials
@@ -38,7 +40,9 @@ class GcpCloudSqlHint
 
 @TypeHint(
     types = [GenericData::class, GoogleJsonError.ErrorInfo::class, GoogleJsonError::class,
-        GenericJson::class, SQLAdmin::class, SQLAdmin.Operations.Get::class]
+        GenericJson::class, SQLAdmin::class, SQLAdmin.Operations.Get::class,
+    Data::class, ClassInfo::class],
+    typeNames = ["com.google.api.client.util.DataMap"]
 )
 @Configuration
 class GcpApiClientHint
