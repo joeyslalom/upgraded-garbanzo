@@ -2,11 +2,12 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 
 plugins {
-	id("org.springframework.boot") version "2.4.5"
+	id("org.springframework.boot") version "2.5.1"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
-	kotlin("jvm") version "1.4.32"
-	kotlin("plugin.spring") version "1.4.32"
-	id("org.springframework.experimental.aot") version "0.9.2"
+	kotlin("jvm") version "1.5.10"
+	kotlin("plugin.spring") version "1.5.10"
+	id("org.springframework.experimental.aot") version "0.10.0"
+	id("org.graalvm.buildtools.native") version "0.9.0"
 	id("com.gorylenko.gradle-git-properties") version "2.3.1"
 }
 
