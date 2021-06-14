@@ -53,7 +53,9 @@ tasks.withType<Test> {
 }
 
 tasks.withType<BootBuildImage> {
-	builder = "paketobuildpacks/builder:tiny"
+	// https://github.com/spring-projects-experimental/spring-native/issues/819
+	//builder = "paketobuildpacks/builder:tiny"
+	builder = "dmikusa/graalvm-tiny"
 	environment = mapOf("BP_NATIVE_IMAGE" to "true",
 		"BP_NATIVE_IMAGE_BUILD_ARGUMENTS" to "--enable-url-protocols=http,https")
 }
