@@ -21,7 +21,7 @@ repositories {
 }
 
 extra["springCloudGcpVersion"] = "2.0.0"
-extra["springCloudVersion"] = "2020.0.2"
+extra["springCloudVersion"] = "2020.0.3"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -53,9 +53,7 @@ tasks.withType<Test> {
 }
 
 tasks.withType<BootBuildImage> {
-	// https://github.com/spring-projects-experimental/spring-native/issues/819
-	//builder = "paketobuildpacks/builder:tiny"
-	builder = "dmikusa/graalvm-tiny"
+	builder = "paketobuildpacks/builder:tiny"
 	environment = mapOf("BP_NATIVE_IMAGE" to "true",
 		"BP_NATIVE_IMAGE_BUILD_ARGUMENTS" to "--enable-url-protocols=http,https")
 }
