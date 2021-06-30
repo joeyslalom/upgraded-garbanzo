@@ -3,6 +3,7 @@ package joeyslalom.upgradedgarbanzo
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.boot.info.GitProperties
+import org.springframework.data.relational.core.mapping.Table
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
@@ -17,6 +18,7 @@ class GcpRestController(private val userRepo: UserRepo) {
     fun users(): List<User> = userRepo.findAll().toList()
 }
 
+@Table("users")
 data class User(val email: String, val firstName: String, val lastName: String)
 
 @Repository
