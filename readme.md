@@ -3,6 +3,7 @@
     * Kotlin
     * Gradle
     * Spring Native
+    * Spring Data JDBC
 * Google Cloud
     * Cloud Run
     * Cloud Build
@@ -40,3 +41,4 @@
     * Add `spring-cloud-gcp-starter-sql-mysql` dependency
     * Consume Environment Variables in application.properties
     * https://github.com/GoogleCloudPlatform/spring-cloud-gcp/tree/main/spring-cloud-gcp-samples/spring-cloud-gcp-sql-mysql-sample
+    * Add `spring-boot-starter-data-jdbc` dependency for handy Repository implementations
