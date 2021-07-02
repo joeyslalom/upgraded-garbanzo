@@ -7,8 +7,6 @@ import org.springframework.data.relational.core.mapping.Table
 import org.springframework.data.repository.CrudRepository
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.RowMapper
-import org.springframework.nativex.hint.AotProxyHint
-import org.springframework.nativex.hint.ProxyBits
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
 import org.springframework.web.bind.annotation.GetMapping
@@ -16,11 +14,14 @@ import org.springframework.web.bind.annotation.RestController
 import java.sql.ResultSet
 
 @RestController
-class GcpRestController(private val userRepo: UserRepo) {
-    private val log = LoggerFactory.getLogger(GcpRestController::class.java)
+class UserRestController(private val repo: UserRepo, private val jdbcRepo: UserJdbcRepo) {
+    private val log = LoggerFactory.getLogger(UserRestController::class.java)
 
     @GetMapping("/users")
-    fun users(): List<User> = userRepo.findAll().toList()
+    fun users(): List<User> = repo.findAll().toList()
+
+    @GetMapping("/jdbcUsers")
+    fun jdbcUsers(): List<User> = jdbcRepo.findAll()
 }
 
 @Table("users")
@@ -30,7 +31,6 @@ data class User(val email: String, val firstName: String, val lastName: String)
 interface UserRepo : CrudRepository<User, String>
 
 @Repository
-@AotProxyHint(targetClass=UserJdbcRepo::class, proxyFeatures = ProxyBits.IS_STATIC)
 class UserJdbcRepo(private val jdbcTemplate: JdbcTemplate) {
 
     val userMapper = RowMapper<User> { rs: ResultSet, _ ->
