@@ -7,8 +7,6 @@ import org.springframework.data.relational.core.mapping.Table
 import org.springframework.data.repository.CrudRepository
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.RowMapper
-import org.springframework.nativex.hint.AotProxyHint
-import org.springframework.nativex.hint.ProxyBits
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
 import org.springframework.web.bind.annotation.GetMapping
@@ -29,7 +27,6 @@ data class User(val email: String, val firstName: String, val lastName: String)
 @Repository
 interface UserRepo : CrudRepository<User, String>
 
-@AotProxyHint(targetClass=UserJdbcRepo::class, proxyFeatures = ProxyBits.IS_STATIC)
 @Repository
 class UserJdbcRepo(private val jdbcTemplate: JdbcTemplate) {
 

@@ -71,3 +71,7 @@ class GcpApiClientHint
 @NativeHint(resources = [ResourceHint(patterns = ["com/google/api/client/googleapis/google.jks"])])
 @Configuration
 class GcpResourcesHint
+
+@TypeHint(types = [UserJdbcRepo::class])
+@Configuration
+class UserJdbcRepoHint
