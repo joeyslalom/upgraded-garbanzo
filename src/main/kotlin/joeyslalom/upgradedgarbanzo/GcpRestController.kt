@@ -34,13 +34,13 @@ val userMapper = RowMapper<User> { rs: ResultSet, _ ->
     User(rs.getString("email"), rs.getString("first_name"), rs.getString("last_name"))
 }
 
-//@Repository
-//class UserJdbcRepo(private val jdbcTemplate: JdbcTemplate) {
-//
-//    fun findAll(): List<User> {
-//        return jdbcTemplate.query("SELECT email, first_name, last_name FROM users", userMapper)
-//    }
-//}
+@Component
+class UserJdbcRepo(private val jdbcTemplate: JdbcTemplate) {
+
+    fun findAll(): List<User> {
+        return jdbcTemplate.query("SELECT email, first_name, last_name FROM users", userMapper)
+    }
+}
 
 @Component
 class LogVersion(private val gitProperties: GitProperties) : InitializingBean {
