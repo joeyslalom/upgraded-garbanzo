@@ -5,7 +5,6 @@ import com.google.api.client.json.GenericJson
 import com.google.api.client.util.ClassInfo
 import com.google.api.client.util.Data
 import com.google.api.client.util.GenericData
-import com.google.api.client.util.SecurityUtils
 import com.google.api.services.sqladmin.SQLAdmin
 import com.google.api.services.sqladmin.SQLAdminRequest
 import com.google.api.services.sqladmin.model.AclEntry
@@ -63,12 +62,18 @@ class GcpSqlAdminHint
 
 @TypeHint(
     types = [GenericData::class, GoogleJsonError.ErrorInfo::class, GoogleJsonError::class,
-        GenericJson::class, Data::class, ClassInfo::class, SecurityUtils::class],
+        GenericJson::class, Data::class, ClassInfo::class],
     typeNames = ["com.google.api.client.util.DataMap"]
 )
 @Configuration
 class GcpApiClientHint
 
-@NativeHint(resources = [ResourceHint(patterns = ["com/google/api/client/googleapis/google.jks"])])
+@NativeHint(
+    resources = [ResourceHint(
+        patterns = [
+            "com/google/api/client/googleapis/google.jks",
+            "com/google/api/client/googleapis/google.p12"]
+    )]
+)
 @Configuration
 class GcpResourcesHint
