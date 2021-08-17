@@ -30,7 +30,9 @@ import com.google.cloud.sql.mysql.SocketFactory
 import com.mysql.cj.jdbc.Driver
 import org.springframework.context.annotation.Configuration
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType
+import org.springframework.nativex.hint.AotProxyHint
 import org.springframework.nativex.hint.NativeHint
+import org.springframework.nativex.hint.ProxyBits
 import org.springframework.nativex.hint.ResourceHint
 import org.springframework.nativex.hint.TypeHint
 import javax.sql.DataSource
@@ -79,3 +81,7 @@ class GcpApiClientHint
 )
 @Configuration
 class GcpResourcesHint
+
+@AotProxyHint(targetClass = UserJdbcRepo::class, proxyFeatures = ProxyBits.IS_STATIC)
+@Configuration
+class UpgradedGarbanzoHint
