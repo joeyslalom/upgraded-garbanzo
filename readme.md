@@ -42,3 +42,6 @@
     * Consume Environment Variables in application.properties
     * https://github.com/GoogleCloudPlatform/spring-cloud-gcp/tree/main/spring-cloud-gcp-samples/spring-cloud-gcp-sql-mysql-sample
     * Add `spring-boot-starter-data-jdbc` dependency for handy Repository implementations
+10. Spring Native 0.10.1 issue
+    * @Repository doesn't work? https://github.com/spring-projects-experimental/spring-native/issues/868
+    * @AotProxyHint doesn't work https://github.com/spring-projects-experimental/spring-native/issues/893
