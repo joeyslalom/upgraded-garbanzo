@@ -45,3 +45,4 @@
 10. Spring Native 0.10.1 issue
     * @Repository doesn't work? https://github.com/spring-projects-experimental/spring-native/issues/868
     * @AotProxyHint doesn't work https://github.com/spring-projects-experimental/spring-native/issues/893
+    * Looks resolved in 0.10.2
