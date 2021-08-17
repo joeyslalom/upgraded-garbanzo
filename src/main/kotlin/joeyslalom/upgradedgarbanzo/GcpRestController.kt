@@ -30,8 +30,7 @@ data class User(val email: String, val firstName: String, val lastName: String)
 @Repository
 interface UserRepo : CrudRepository<User, String>
 
-@Component
-//@Repository XXX Using @Repository instead of @Component causes a runtime failure
+@Repository
 class UserJdbcRepo(private val jdbcTemplate: JdbcTemplate) {
 
     val userMapper = RowMapper<User> { rs: ResultSet, _ ->
