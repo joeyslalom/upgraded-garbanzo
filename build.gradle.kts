@@ -2,12 +2,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 
 plugins {
-	id("org.springframework.boot") version "2.5.4"
+	id("org.springframework.boot") version "2.5.5"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
-	kotlin("jvm") version "1.5.21"
-	kotlin("plugin.spring") version "1.5.21"
-	id("org.springframework.experimental.aot") version "0.10.3"
-	id("org.graalvm.buildtools.native") version "0.9.3"
+	kotlin("jvm") version "1.5.31"
+	kotlin("plugin.spring") version "1.5.31"
+	id("org.springframework.experimental.aot") version "0.10.4"
 	id("com.gorylenko.gradle-git-properties") version "2.3.1"
 }
 
@@ -21,7 +20,7 @@ repositories {
 }
 
 extra["springCloudGcpVersion"] = "2.0.4"
-extra["springCloudVersion"] = "2020.0.3"
+extra["springCloudVersion"] = "2020.0.4"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
